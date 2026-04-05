@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "CENG454-HW1-Osman-Bilgin-210444045.slnx"
+    "dotnet.defaultSolution": "CENG454-HW2-Osman-Bilgin-210444045.slnx"
 }
