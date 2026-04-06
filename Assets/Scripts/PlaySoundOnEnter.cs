@@ -11,14 +11,21 @@ public class PlaySoundOnEnter : MonoBehaviour
     void Awake()
     {
         source = GetComponent<AudioSource>();
+        source.playOnAwake = false;
     }
 
     void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+    {   
+        if (!other.CompareTag("Player"))
+            return;
+        
+        // voice is triggered only entrance of the danger zone
+        Vector3 localPos = transform.InverseTransformPoint(other.transform.position);
+        if (localPos.z > 0)
         {
             source.Play();
         }
+
     }
 
     void OnTriggerExit(Collider other)
