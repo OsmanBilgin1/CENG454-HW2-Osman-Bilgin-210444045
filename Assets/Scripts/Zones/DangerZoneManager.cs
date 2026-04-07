@@ -1,11 +1,13 @@
-// DangerZoneHUDMessage.cs 
+// DangerZoneManager.cs 
 // CENG 454 - HW2 Midterm: Sky-High Prototype II 
 // Author: Osman Bilgin | Student ID: 210444045
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class DangerZoneHUDMessage : MonoBehaviour
+public class DangerZoneManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text warningMyText;
     [SerializeField] private string enterMessage = "Entered dangerous zone!";
@@ -16,6 +18,7 @@ public class DangerZoneHUDMessage : MonoBehaviour
 
     private bool areyouinside = false;
     private float timer = 0f;
+    private GameObject ActiveMissile;
 
     void Update()
     {
@@ -61,8 +64,29 @@ public class DangerZoneHUDMessage : MonoBehaviour
         {
             warningMyText.text = exitMessage;
             areyouinside = false;
+            timer = 0f;
+            if (ActiveMissile != null)
+            {
+                Destroy(ActiveMissile);
+            }
+            
         }
     }
     
+    public void getMissile(GameObject Missile)
+    {
+    ActiveMissile = Missile;
+    }
+
+    public void StartRestartProcess()
+    {
+        StartCoroutine(WaitAndRestart());
+    }
+
+    private IEnumerator WaitAndRestart()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }

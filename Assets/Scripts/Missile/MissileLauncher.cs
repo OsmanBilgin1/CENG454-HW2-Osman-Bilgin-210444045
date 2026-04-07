@@ -2,6 +2,7 @@
 // CENG 454 - HW2 Midterm: Sky-High Prototype II 
 // Author: Osman Bilgin | Student ID: 210444045
 
+using TMPro;
 using UnityEngine;
 
 public class MissileLauncher : MonoBehaviour
@@ -9,18 +10,23 @@ public class MissileLauncher : MonoBehaviour
     [SerializeField] private GameObject missilePrefab; 
     [SerializeField] private Transform jet; 
     [SerializeField] private AudioSource launchAudioSource;
+    [SerializeField] private DangerZoneManager dangerzonemanager;
+    [SerializeField] private TMP_Text MissFailText;
 
     private GameObject ActiveMissile;
 
     public GameObject Launch(Transform target)
     {
         // (Task 3-A): instantiate the missile at launchPoint
-        //ActiveMissile = Instantiate(missilePrefab, transform.position, transform.rotation);
-        //MissileHoming homingScript = ActiveMissile.GetComponent<MissileHoming>();
+        ActiveMissile = Instantiate(missilePrefab, transform.position, transform.rotation);
+        dangerzonemanager.getMissile(ActiveMissile);
+        MissileHoming homingScript = ActiveMissile.GetComponent<MissileHoming>();
 
-        //if (homingScript != null)
+        if (homingScript != null)
         {
-            //homingScript.SetTarget(target);
+            homingScript.SetTarget(target);
+            homingScript.SetTextReference(MissFailText);
+            homingScript.SetDangerZoneManagerReference(dangerzonemanager);
         }
 
         // Task 3-B and Task 3-C
