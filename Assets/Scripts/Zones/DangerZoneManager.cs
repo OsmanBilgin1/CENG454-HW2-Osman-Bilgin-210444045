@@ -1,11 +1,11 @@
-// DangerZoneHUDMessage.cs 
+// DangerZoneManager.cs 
 // CENG 454 - HW2 Midterm: Sky-High Prototype II 
 // Author: Osman Bilgin | Student ID: 210444045
 
 using TMPro;
 using UnityEngine;
 
-public class DangerZoneHUDMessage : MonoBehaviour
+public class DangerZoneManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text warningMyText;
     [SerializeField] private string enterMessage = "Entered dangerous zone!";
