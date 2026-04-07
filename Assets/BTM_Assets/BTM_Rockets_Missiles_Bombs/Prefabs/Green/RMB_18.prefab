@@ -59,5 +59,27 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 11d74b9a763cec845ae3410b07b073b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4773316460268834332}
   m_SourcePrefab: {fileID: 100100000, guid: 11d74b9a763cec845ae3410b07b073b5, type: 3}
+--- !u!1 &3938991185133050007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 11d74b9a763cec845ae3410b07b073b5, type: 3}
+  m_PrefabInstance: {fileID: 4209583952271058374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4773316460268834332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938991185133050007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1eda76eda9d57c4d8a4aa26e56d4e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MissileHoming
+  moveSpeed: 50
+  turnSpeed: 20
