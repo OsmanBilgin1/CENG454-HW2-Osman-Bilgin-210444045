@@ -19,17 +19,14 @@ public class PlaySoundOnEnter : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
         
-        // voice is triggered only entrance of the danger zone
-        Vector3 localPos = transform.InverseTransformPoint(other.transform.position);
-        if (localPos.z > 0)
-        {
-            source.Play();
-        }
+        
+        source.Play();
+        
 
     }
 
     void OnTriggerExit(Collider other)
     {
-        // source.Stop();
+        source.Stop();
     }
 }

@@ -23141,7 +23141,7 @@ GameObject:
   - component: {fileID: 1781139581}
   - component: {fileID: 1781139585}
   m_Layer: 0
-  m_Name: SoundTrigger
+  m_Name: DangerZoneObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23178,8 +23178,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1152.4747, y: 337.22336, z: 51.530846}
-  m_Center: {x: 85.62598, y: 57.272064, z: 69.448654}
+  m_Size: {x: 1868.0605, y: 337.22336, z: 1029.5645}
+  m_Center: {x: 30.300293, y: 57.272064, z: -419.568}
 --- !u!82 &1781139583
 AudioSource:
   m_ObjectHideFlags: 0
