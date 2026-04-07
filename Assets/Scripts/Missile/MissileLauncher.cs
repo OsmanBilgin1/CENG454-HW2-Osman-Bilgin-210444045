@@ -15,12 +15,12 @@ public class MissileLauncher : MonoBehaviour
     public GameObject Launch(Transform target)
     {
         // (Task 3-A): instantiate the missile at launchPoint
-        //ActiveMissile = Instantiate(missilePrefab, transform.position, transform.rotation);
-        //MissileHoming homingScript = ActiveMissile.GetComponent<MissileHoming>();
+        ActiveMissile = Instantiate(missilePrefab, transform.position, transform.rotation);
+        MissileHoming homingScript = ActiveMissile.GetComponent<MissileHoming>();
 
-        //if (homingScript != null)
+        if (homingScript != null)
         {
-            //homingScript.SetTarget(target);
+            homingScript.SetTarget(target);
         }
 
         // Task 3-B and Task 3-C
