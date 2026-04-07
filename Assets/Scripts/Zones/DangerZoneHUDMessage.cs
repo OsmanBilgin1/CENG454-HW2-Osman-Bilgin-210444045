@@ -9,16 +9,34 @@ public class DangerZoneHUDMessage : MonoBehaviour
 {
     [SerializeField] private TMP_Text warningMyText;
     [SerializeField] private string enterMessage = "Entered dangerous zone!";
-    [SerializeField] private string exitMessage = "Zombie";
+    [SerializeField] private string exitMessage = "";
+    [SerializeField] private CanvasGroup canvas;
+    [SerializeField] private Transform jet;
+    [SerializeField] private GameObject dangerobject;
 
-    private void Start()
+    private bool areyouinside = false;
+    private float timer = 0f;
+
+    void Update()
     {
-        if (warningMyText != null)
+        if (areyouinside)
         {
-            warningMyText.text = "";
+            timer += Time.deltaTime;
+            if (timer > 5.0f)
+            {
+                MissileLauncher launcher = dangerobject.GetComponent<MissileLauncher>();
+                if (launcher != null)
+                {
+                    launcher.Launch(jet);
+
+                }
+                
+                areyouinside = false;
+                timer = 0f;
+            }
 
         }
-    }
+    } 
 
     void OnTriggerEnter(Collider other)
     {   
@@ -29,6 +47,7 @@ public class DangerZoneHUDMessage : MonoBehaviour
         if (warningMyText != null)
         {
             warningMyText.text = enterMessage;
+            areyouinside = true;
         }
 
     }
@@ -41,6 +60,7 @@ public class DangerZoneHUDMessage : MonoBehaviour
         if (warningMyText != null)
         {
             warningMyText.text = exitMessage;
+            areyouinside = false;
         }
     }
     

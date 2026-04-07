@@ -18399,7 +18399,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: aad6ef43bbaaf42478b897df017184ec, type: 2}
     - target: {fileID: -927199367670048503, guid: a2e2dc37c1fdbdd419db3632766d70aa, type: 3}
       propertyPath: m_Name
-      value: Missile Launcher
+      value: MissileLaunchObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23738,6 +23738,9 @@ MonoBehaviour:
   warningMyText: {fileID: 685426791}
   enterMessage: Entered dangerous zone!
   exitMessage: 
+  canvas: {fileID: 0}
+  jet: {fileID: 1164432419}
+  dangerobject: {fileID: 428507264}
 --- !u!1 &1795045303
 GameObject:
   m_ObjectHideFlags: 1
