@@ -16,6 +16,7 @@ public class DangerZoneManager : MonoBehaviour
 
     private bool areyouinside = false;
     private float timer = 0f;
+    private GameObject ActiveMissile;
 
     void Update()
     {
@@ -61,8 +62,18 @@ public class DangerZoneManager : MonoBehaviour
         {
             warningMyText.text = exitMessage;
             areyouinside = false;
+            timer = 0f;
+            if (ActiveMissile != null)
+            {
+                Destroy(ActiveMissile);
+            }
+            
         }
     }
     
+    public void getMissile(GameObject Missile)
+    {
+    ActiveMissile = Missile;
+    }
 
 }

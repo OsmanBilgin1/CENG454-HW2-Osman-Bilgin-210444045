@@ -9,6 +9,7 @@ public class MissileLauncher : MonoBehaviour
     [SerializeField] private GameObject missilePrefab; 
     [SerializeField] private Transform jet; 
     [SerializeField] private AudioSource launchAudioSource;
+    [SerializeField] private DangerZoneManager dangerzonemanager;
 
     private GameObject ActiveMissile;
 
@@ -16,6 +17,7 @@ public class MissileLauncher : MonoBehaviour
     {
         // (Task 3-A): instantiate the missile at launchPoint
         ActiveMissile = Instantiate(missilePrefab, transform.position, transform.rotation);
+        dangerzonemanager.getMissile(ActiveMissile);
         MissileHoming homingScript = ActiveMissile.GetComponent<MissileHoming>();
 
         if (homingScript != null)

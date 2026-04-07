@@ -18429,6 +18429,7 @@ MonoBehaviour:
   missilePrefab: {fileID: 3938991185133050007, guid: 82383f1abdf055c4ba908222dcaabc1a, type: 3}
   jet: {fileID: 1164432419}
   launchAudioSource: {fileID: 0}
+  dangerzonemanager: {fileID: 1781139585}
 --- !u!1001 &441222746
 PrefabInstance:
   m_ObjectHideFlags: 0
