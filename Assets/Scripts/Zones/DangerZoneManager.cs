@@ -4,6 +4,8 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class DangerZoneManager : MonoBehaviour
 {
@@ -74,6 +76,17 @@ public class DangerZoneManager : MonoBehaviour
     public void getMissile(GameObject Missile)
     {
     ActiveMissile = Missile;
+    }
+
+    public void StartRestartProcess()
+    {
+        StartCoroutine(WaitAndRestart());
+    }
+
+    private IEnumerator WaitAndRestart()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

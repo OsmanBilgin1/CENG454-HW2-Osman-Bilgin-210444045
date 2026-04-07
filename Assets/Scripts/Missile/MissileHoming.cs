@@ -12,10 +12,21 @@ public class MissileHoming : MonoBehaviour
     [SerializeField] private TMP_Text fail_message;
 
     private Transform target;
+    private DangerZoneManager dangerZoneManager;
 
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+    }
+
+    public void SetTextReference(TMP_Text targetText)
+    {
+        fail_message = targetText;
+    }
+
+    public void SetDangerZoneManagerReference(DangerZoneManager managerRef)
+    {
+        dangerZoneManager = managerRef;
     }
 
     void Update()
@@ -46,20 +57,23 @@ public class MissileHoming : MonoBehaviour
         }
     }
 
-    public void SetTextReference(TMP_Text targetText) 
-    {
-    fail_message = targetText;
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag("Player")) 
-   {
-     return;
-    }
-   SetTextOpacity(1.0f);
-   fail_message.text = "Mission Failed!";
- 
+        if (!other.CompareTag("Player"))
+            return;
+
+        if (fail_message != null)
+        {
+            fail_message.text = "Mission Failed!";
+            SetTextOpacity(1.0f);
+        }
+
+        if (dangerZoneManager != null)
+        {
+            dangerZoneManager.StartRestartProcess();
+        }
+
+        Destroy(gameObject);
     }
 
     private void SetTextOpacity(float opacity)

@@ -26,6 +26,7 @@ public class MissileLauncher : MonoBehaviour
         {
             homingScript.SetTarget(target);
             homingScript.SetTextReference(MissFailText);
+            homingScript.SetDangerZoneManagerReference(dangerzonemanager);
         }
 
         // Task 3-B and Task 3-C
