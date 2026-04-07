@@ -3,11 +3,13 @@
 // Author: Osman Bilgin | Student ID: 210444045
 
 using UnityEngine;
+using TMPro;
 
 public class MissileHoming : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 20f;
     [SerializeField] private float turnSpeed = 5f;
+    [SerializeField] private TMP_Text fail_message;
 
     private Transform target;
 
@@ -43,4 +45,30 @@ public class MissileHoming : MonoBehaviour
             transform.rotation = rotation;
         }
     }
+
+    public void SetTextReference(TMP_Text targetText) 
+    {
+    fail_message = targetText;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(!other.CompareTag("Player")) 
+   {
+     return;
+    }
+   SetTextOpacity(1.0f);
+   fail_message.text = "Mission Failed!";
+ 
+    }
+
+    private void SetTextOpacity(float opacity)
+{
+    if (fail_message != null)
+    {
+        Color c = fail_message.color;
+        c.a = opacity; 
+        fail_message.color = c;
+    }
+}
 }
