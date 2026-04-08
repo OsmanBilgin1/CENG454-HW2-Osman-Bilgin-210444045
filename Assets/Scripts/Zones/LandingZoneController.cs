@@ -7,20 +7,21 @@ using TMPro;
 
 public class LandingZoneController : MonoBehaviour
 {
-    [SerializeField] private TMP_Text SuccessText;
-    [SerializeField] private string successMessage = "Mission Completed!";
+    [SerializeField] private TMP_Text successText;
+    [SerializeField] private string successMessage = "Mission Successful!";
+    [SerializeField] private DangerZoneManager manager;
 
-    void OnTriggerEnter(Collider other)
-    {   
+    private void OnTriggerEnter(Collider other)
+    {
         if (!other.CompareTag("Player"))
             return;
-        
-        
-        if (SuccessText != null)
-        {
-            SuccessText.text = successMessage;
-    
-        }
 
+        if (manager == null)
+            return;
+
+        if (manager.CanCompleteMission())
+        {
+            manager.StartSuccessProcess(successText, successMessage);
+        }
     }
 }
