@@ -62,15 +62,16 @@ public class MissileHoming : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
+        if (dangerZoneManager != null)
+        {
+            dangerZoneManager.SetMissionFailed();
+            dangerZoneManager.StartRestartProcess();
+        }
+
         if (fail_message != null)
         {
             fail_message.text = "Mission Failed!";
             SetTextOpacity(1.0f);
-        }
-
-        if (dangerZoneManager != null)
-        {
-            dangerZoneManager.StartRestartProcess();
         }
 
         Destroy(gameObject);

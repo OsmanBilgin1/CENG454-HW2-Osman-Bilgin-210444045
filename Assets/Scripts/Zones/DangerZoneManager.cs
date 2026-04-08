@@ -20,6 +20,11 @@ public class DangerZoneManager : MonoBehaviour
     private float timer = 0f;
     private GameObject ActiveMissile;
 
+    private bool hasEnteredDangerZone = false;
+    private bool hasExitedDangerZone = false;
+    private bool missionFailed = false;
+    private bool missionCompleted = false;
+
     void Update()
     {
         if (areyouinside)
@@ -51,6 +56,7 @@ public class DangerZoneManager : MonoBehaviour
         {
             warningMyText.text = enterMessage;
             areyouinside = true;
+            hasEnteredDangerZone = true;
         }
 
     }
@@ -65,6 +71,11 @@ public class DangerZoneManager : MonoBehaviour
             warningMyText.text = exitMessage;
             areyouinside = false;
             timer = 0f;
+            if (!missionFailed)
+            {
+               hasExitedDangerZone = true;  
+            }
+
             if (ActiveMissile != null)
             {
                 Destroy(ActiveMissile);
@@ -76,6 +87,31 @@ public class DangerZoneManager : MonoBehaviour
     public void getMissile(GameObject Missile)
     {
     ActiveMissile = Missile;
+    }
+
+    public void SetMissionFailed()
+    {
+        missionFailed = true;
+    }
+
+    public bool CanCompleteMission()
+    {
+        Debug.Log($"STATE => Entered:{hasEnteredDangerZone} Exited:{hasExitedDangerZone} Failed:{missionFailed} Completed:{missionCompleted}");
+        return hasEnteredDangerZone && hasExitedDangerZone && !missionFailed && !missionCompleted;
+    }
+    public void StartSuccessProcess(TMP_Text successText, string message)
+    {
+        if (missionCompleted)
+            return;
+
+        missionCompleted = true;
+
+        if (successText != null)
+        {
+            successText.text = message;
+        }
+
+        StartCoroutine(WaitAndRestart());
     }
 
     public void StartRestartProcess()
