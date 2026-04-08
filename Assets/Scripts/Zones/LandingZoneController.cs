@@ -10,6 +10,12 @@ public class LandingZoneController : MonoBehaviour
     [SerializeField] private TMP_Text successText;
     [SerializeField] private string successMessage = "Mission Successful!";
     [SerializeField] private DangerZoneManager manager;
+    private AudioSource successfulsound;
+
+    void Start()
+    {
+        successfulsound = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +28,7 @@ public class LandingZoneController : MonoBehaviour
         if (manager.CanCompleteMission())
         {
             manager.StartSuccessProcess(successText, successMessage);
+            successfulsound.Play();
         }
     }
 }
